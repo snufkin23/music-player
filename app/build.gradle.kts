@@ -5,16 +5,12 @@ plugins {
 
 android {
 	namespace = "com.sushantkhadka.musicplayer"
-	compileSdk {
-		version = release(36) {
-			minorApiLevel = 1
-		}
-	}
+	compileSdk = 35
 
 	defaultConfig {
 		applicationId = "com.sushantkhadka.musicplayer"
 		minSdk = 26
-		targetSdk = 36
+		targetSdk = 35
 		versionCode = 1
 		versionName = "1.0"
 
@@ -42,7 +38,11 @@ android {
 dependencies {
 	implementation(libs.androidx.core.ktx)
 	implementation(libs.androidx.lifecycle.runtime.ktx)
+	implementation(libs.androidx.lifecycle.viewmodel.compose)
+	implementation(libs.androidx.lifecycle.runtime.compose)
+
 	implementation(libs.androidx.activity.compose)
+
 	implementation(platform(libs.androidx.compose.bom))
 	implementation(libs.androidx.compose.ui)
 	implementation(libs.androidx.compose.ui.graphics)
