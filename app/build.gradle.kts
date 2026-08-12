@@ -1,16 +1,18 @@
 plugins {
 	alias(libs.plugins.android.application)
 	alias(libs.plugins.kotlin.compose)
+	alias(libs.plugins.hilt)
+	alias(libs.plugins.ksp)
 }
 
 android {
 	namespace = "com.sushantkhadka.musicplayer"
-	compileSdk = 35
+	compileSdk = 37
 
 	defaultConfig {
 		applicationId = "com.sushantkhadka.musicplayer"
 		minSdk = 26
-		targetSdk = 35
+		targetSdk = 37
 		versionCode = 1
 		versionName = "1.0"
 
@@ -27,8 +29,8 @@ android {
 		}
 	}
 	compileOptions {
-		sourceCompatibility = JavaVersion.VERSION_11
-		targetCompatibility = JavaVersion.VERSION_11
+		sourceCompatibility = JavaVersion.VERSION_17
+		targetCompatibility = JavaVersion.VERSION_17
 	}
 	buildFeatures {
 		compose = true
@@ -42,6 +44,10 @@ dependencies {
 	implementation(libs.androidx.lifecycle.runtime.compose)
 
 	implementation(libs.androidx.activity.compose)
+
+	implementation(libs.hilt.android)
+	ksp(libs.hilt.compiler)
+	implementation(libs.hilt.navigation.compose)
 
 	implementation(platform(libs.androidx.compose.bom))
 	implementation(libs.androidx.compose.ui)
