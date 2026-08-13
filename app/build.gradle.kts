@@ -35,6 +35,9 @@ android {
 	buildFeatures {
 		compose = true
 	}
+	ksp {
+		arg("room.schemaLocation", "$projectDir/schemas")
+	}
 }
 
 dependencies {
@@ -49,6 +52,13 @@ dependencies {
 	ksp(libs.hilt.compiler)
 	implementation(libs.hilt.navigation.compose)
 
+	implementation(libs.androidx.room.runtime)
+	implementation(libs.androidx.room.ktx)
+	ksp(libs.androidx.room.compiler)
+
+	implementation(libs.androidx.media3.exoplayer)
+	implementation(libs.androidx.media3.session)
+
 	implementation(platform(libs.androidx.compose.bom))
 	implementation(libs.androidx.compose.ui)
 	implementation(libs.androidx.compose.ui.graphics)
@@ -61,4 +71,5 @@ dependencies {
 	androidTestImplementation(libs.androidx.compose.ui.test.junit4)
 	debugImplementation(libs.androidx.compose.ui.tooling)
 	debugImplementation(libs.androidx.compose.ui.test.manifest)
+
 }

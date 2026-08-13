@@ -20,6 +20,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
+        android:name=".MusicApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -40,10 +41,6 @@
             </intent-filter>
         </activity>
 
-        <!--
-        Playback service — uncomment once MusicPlaybackService is created
-        under app/src/main/java/.../playback/MusicPlaybackService.kt
-
         <service
             android:name=".playback.MusicPlaybackService"
             android:foregroundServiceType="mediaPlayback"
@@ -53,7 +50,6 @@
                 <action android:name="android.media.browse.MediaBrowserService" />
             </intent-filter>
         </service>
-        -->
 
     </application>
 
