@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.sushantkhadka.musicplayer.permission.PermissionGate
 import com.sushantkhadka.musicplayer.ui.theme.MusicplayerTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,11 +22,8 @@ class MainActivity : ComponentActivity() {
 		enableEdgeToEdge()
 		setContent {
 			MusicplayerTheme {
-				Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-					Greeting(
-						name = "Android",
-						modifier = Modifier.padding(innerPadding)
-					)
+				PermissionGate {
+					com.sushantkhadka.musicplayer.ui.library.LibraryScreen()
 				}
 			}
 		}
