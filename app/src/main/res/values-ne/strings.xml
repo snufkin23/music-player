@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">Musicplayer</string>
+
+    <string name="nav_library">लाइब्रेरी</string>
+    <string name="nav_albums">एल्बमहरू</string>
+    <string name="nav_artists">कलाकारहरू</string>
+    <string name="nav_search">खोज</string>
+
+    <string name="action_play">बजाउनुहोस्</string>
+    <string name="action_pause">रोक्नुहोस्</string>
+    <string name="action_next">अर्को</string>
+    <string name="action_previous">अघिल्लो</string>
+    <string name="action_back">पछाडि</string>
+    <string name="action_collapse">सानो पार्नुहोस्</string>
+    <string name="action_queue">लाम</string>
+    <string name="action_clear">खाली गर्नुहोस्</string>
+    <string name="action_move_up">माथि सार्नुहोस्</string>
+    <string name="action_move_down">तल सार्नुहोस्</string>
+    <string name="action_remove_from_queue">लामबाट हटाउनुहोस्</string>
+
+    <string name="permission_rationale_message">तपाईंको लाइब्रेरी बनाउन र प्लेब्याक नियन्त्रणका लागि सूचना पठाउन Musicplayer लाई तपाईंको अडियो फाइलहरूमा पहुँच चाहिन्छ।</string>
+    <string name="action_grant_permission">अनुमति दिनुहोस्</string>
+    <string name="permission_denied_message">अनुमति अस्वीकार गरियो। Musicplayer प्रयोग गर्न कृपया सेटिङमा गई अडियो पहुँच सक्षम गर्नुहोस्।</string>
+    <string name="action_open_settings">सेटिङ खोल्नुहोस्</string>
+
+    <string name="library_empty">यस डिभाइसमा कुनै सङ्गीत फेला परेन।</string>
+    <string name="albums_empty">कुनै एल्बम फेला परेन।</string>
+    <string name="artists_empty">कुनै कलाकार फेला परेनन्।</string>
+
+    <string name="nothing_playing">केही बजिरहेको छैन</string>
+    <string name="connecting">जडान हुँदैछ…</string>
+
+    <string name="queue_title">लाम</string>
+    <string name="queue_empty">लाम खाली छ</string>
+
+    <string name="search_placeholder">गीत, कलाकार, एल्बम खोज्नुहोस्</string>
+    <string name="search_idle_prompt">आफ्नो लाइब्रेरी खोज्नुहोस्</string>
+    <string name="search_no_results">\"%1$s\" का लागि कुनै नतिजा फेला परेन</string>
+
+    <string name="error_generic">केही समस्या भयो: %1$s</string>
+
+    <plurals name="album_count">
+        <item quantity="other">%1$d एल्बम</item>
+    </plurals>
+    <plurals name="track_count">
+        <item quantity="other">%1$d ट्र्याक</item>
+    </plurals>
+</resources>
