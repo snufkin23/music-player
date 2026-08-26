@@ -1,14 +1,24 @@
 package com.sushantkhadka.musicplayer
 
 import android.app.Application
+import coil3.ImageLoader
+import coil3.PlatformContext
+import coil3.SingletonImageLoader
+import coil3.request.crossfade
+import com.sushantkhadka.musicplayer.data.imageloading.AlbumArtFetcher
+import com.sushantkhadka.musicplayer.data.imageloading.AlbumArtKeyer
 import dagger.hilt.android.HiltAndroidApp
 
-/**
- * Application entry point for Hilt. This class must be registered in
- * AndroidManifest.xml via android:name=".MusicApplication" — without
- * that manifest registration, @AndroidEntryPoint on MainActivity (or
- * any other Android class) will fail at runtime with an error like
- * "Hilt Activity must be attached to an @HiltAndroidApp Application."
- */
 @HiltAndroidApp
-class MusicApplication : Application()
+class MusicApplication : Application(), SingletonImageLoader.Factory {
+
+    override fun newImageLoader(context: PlatformContext): ImageLoader {
+        return ImageLoader.Builder(context)
+            .components {
+                add(AlbumArtKeyer())
+                add(AlbumArtFetcher.Factory())
+            }
+            .crossfade(true)
+            .build()
+    }
+}

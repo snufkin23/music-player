@@ -2,9 +2,9 @@ package com.sushantkhadka.musicplayer.ui.library
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sushantkhadka.musicplayer.data.repository.MusicRepository
-import com.sushantkhadka.musicplayer.playback.PlaybackState
-import com.sushantkhadka.musicplayer.playback.PlayerController
+import com.sushantkhadka.musicplayer.domain.model.Track
+import com.sushantkhadka.musicplayer.domain.repository.MusicRepository
+import com.sushantkhadka.musicplayer.domain.repository.PlaybackRepository
 import com.sushantkhadka.musicplayer.playback.toMediaItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,24 +13,30 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * Owns track loading and play-initiation only. Playback state
+ * (isPlaying, position, current track) now lives in the shared
+ * PlayerViewModel — LibraryViewModel just tells PlayerController what
+ * to play, it doesn't observe playback state itself.
+ */
 @HiltViewModel
 class LibraryViewModel @Inject constructor(
     private val repository: MusicRepository,
-    private val playerController: PlayerController
+    private val playerController: PlaybackRepository
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<LibraryUiState>(LibraryUiState.Loading)
     val uiState: StateFlow<LibraryUiState> = _uiState.asStateFlow()
 
-    val playbackState: StateFlow<PlaybackState> = playerController.playbackState
-
-    private var loadedTracks: List<com.sushantkhadka.musicplayer.data.model.Track> = emptyList()
+    private var loadedTracks: List<Track> = emptyList()
 
     init {
-        viewModelScope.launch {
-            playerController.ensureConnected()
-        }
         loadTracks()
+        viewModelScope.launch {
+            repository.libraryRefreshSignal.collect {
+                loadTracks()
+            }
+        }
     }
 
     private fun loadTracks() {
@@ -50,7 +56,7 @@ class LibraryViewModel @Inject constructor(
         }
     }
 
-    fun onTrackClicked(track: com.sushantkhadka.musicplayer.data.model.Track) {
+    fun onTrackClicked(track: Track) {
         val startIndex = loadedTracks.indexOf(track)
         if (startIndex == -1) return
 
@@ -60,23 +66,6 @@ class LibraryViewModel @Inject constructor(
         viewModelScope.launch {
             repository.recordTrackPlayed(track.id)
         }
-    }
-
-    fun onPlayPauseClicked() {
-        val isPlaying = playbackState.value.isPlaying
-        if (isPlaying) {
-            playerController.pause()
-        } else {
-            playerController.play()
-        }
-    }
-
-    fun onSkipNextClicked() {
-        playerController.skipToNext()
-    }
-
-    fun onSkipPreviousClicked() {
-        playerController.skipToPrevious()
     }
 
     fun refresh() {

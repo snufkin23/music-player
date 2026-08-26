@@ -2,14 +2,8 @@ package com.sushantkhadka.musicplayer.playback
 
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MediaMetadata
-import com.sushantkhadka.musicplayer.data.model.Track
+import com.sushantkhadka.musicplayer.domain.model.Track
 
-/**
- * Maps this app's domain Track model to a Media3 MediaItem. This is
- * the ONLY place this conversion happens — Track never gets built
- * into a MediaItem anywhere else, keeping the seam between domain
- * models and Media3 types in one place.
- */
 fun Track.toMediaItem(): MediaItem {
     val metadata = MediaMetadata.Builder()
         .setTitle(title)
@@ -18,7 +12,7 @@ fun Track.toMediaItem(): MediaItem {
         .build()
 
     return MediaItem.Builder()
-        .setMediaId(id.toString())
+        .setMediaId(id)
         .setUri(uri)
         .setMediaMetadata(metadata)
         .build()

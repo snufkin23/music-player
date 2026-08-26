@@ -79,7 +79,7 @@ class MusicPlaybackService : MediaLibraryService() {
     /**
      * Minimal callback: provides a root node and empty children so the
      * MediaLibraryService contract is satisfied. Actual browsable
-     * library content is added once MediaStore-backed browsing is
+     * library content is added once folder-backed browsing is
      * wired into the session (planned alongside the Library UI work).
      */
     private inner class LibrarySessionCallback : MediaLibrarySession.Callback {

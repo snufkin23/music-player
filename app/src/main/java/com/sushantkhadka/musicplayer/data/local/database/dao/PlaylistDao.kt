@@ -33,13 +33,13 @@ interface PlaylistDao {
 
     @Query(
         "DELETE FROM playlist_track_cross_ref " +
-            "WHERE playlistId = :playlistId AND mediaStoreTrackId = :trackId"
+            "WHERE playlistId = :playlistId AND trackId = :trackId"
     )
-    suspend fun removeTrackFromPlaylist(playlistId: Long, trackId: Long)
+    suspend fun removeTrackFromPlaylist(playlistId: Long, trackId: String)
 
     @Query(
-        "SELECT mediaStoreTrackId FROM playlist_track_cross_ref " +
+        "SELECT trackId FROM playlist_track_cross_ref " +
             "WHERE playlistId = :playlistId ORDER BY position ASC"
     )
-    fun getTrackIdsForPlaylist(playlistId: Long): Flow<List<Long>>
+    fun getTrackIdsForPlaylist(playlistId: Long): Flow<List<String>>
 }

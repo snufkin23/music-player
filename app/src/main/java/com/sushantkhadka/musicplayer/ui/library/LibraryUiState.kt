@@ -1,6 +1,6 @@
 package com.sushantkhadka.musicplayer.ui.library
 
-import com.sushantkhadka.musicplayer.data.model.Track
+import com.sushantkhadka.musicplayer.domain.model.Track
 
 sealed interface LibraryUiState {
     data object Loading : LibraryUiState

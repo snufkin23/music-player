@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.sushantkhadka.musicplayer.permission.PermissionGate
+import com.sushantkhadka.musicplayer.ui.setup.FolderGate
 import com.sushantkhadka.musicplayer.ui.theme.MusicplayerTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -15,8 +15,8 @@ class MainActivity : ComponentActivity() {
 		enableEdgeToEdge()
 		setContent {
 			MusicplayerTheme {
-				PermissionGate {
-					com.sushantkhadka.musicplayer.ui.library.LibraryScreen()
+				FolderGate {
+					com.sushantkhadka.musicplayer.ui.navigation.AppRoot()
 				}
 			}
 		}

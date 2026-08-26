@@ -4,7 +4,9 @@ import android.content.Context
 import androidx.room.Room
 import com.sushantkhadka.musicplayer.data.local.database.MusicDatabase
 import com.sushantkhadka.musicplayer.data.local.database.dao.FavoriteDao
+import com.sushantkhadka.musicplayer.data.local.database.dao.MusicFolderDao
 import com.sushantkhadka.musicplayer.data.local.database.dao.PlaylistDao
+import com.sushantkhadka.musicplayer.data.local.database.dao.TrackCacheDao
 import com.sushantkhadka.musicplayer.data.local.database.dao.TrackStatsDao
 import dagger.Module
 import dagger.Provides
@@ -26,7 +28,8 @@ object DatabaseModule {
             context,
             MusicDatabase::class.java,
             "musicplayer.db"
-        ).build()
+        ).addMigrations(MusicDatabase.MIGRATION_1_2, MusicDatabase.MIGRATION_2_3)
+            .build()
     }
 
     @Provides
@@ -37,4 +40,10 @@ object DatabaseModule {
 
     @Provides
     fun provideTrackStatsDao(database: MusicDatabase): TrackStatsDao = database.trackStatsDao()
+
+    @Provides
+    fun provideMusicFolderDao(database: MusicDatabase): MusicFolderDao = database.musicFolderDao()
+
+    @Provides
+    fun provideTrackCacheDao(database: MusicDatabase): TrackCacheDao = database.trackCacheDao()
 }

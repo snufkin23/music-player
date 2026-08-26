@@ -17,11 +17,20 @@
     <string name="action_move_up">माथि सार्नुहोस्</string>
     <string name="action_move_down">तल सार्नुहोस्</string>
     <string name="action_remove_from_queue">लामबाट हटाउनुहोस्</string>
+    <string name="action_shuffle">मिश्रण</string>
+    <string name="action_repeat">दोहोर्याउनुहोस्</string>
+    <string name="action_settings">सेटिङ</string>
+    <string name="action_choose_folder">फोल्डर छान्नुहोस्</string>
+    <string name="action_add_folder">फोल्डर थप्नुहोस्</string>
+    <string name="action_remove_folder">फोल्डर हटाउनुहोस्</string>
+    <string name="action_rescan_library">लाइब्रेरी पुनः स्क्यान गर्नुहोस्</string>
 
-    <string name="permission_rationale_message">तपाईंको लाइब्रेरी बनाउन र प्लेब्याक नियन्त्रणका लागि सूचना पठाउन Musicplayer लाई तपाईंको अडियो फाइलहरूमा पहुँच चाहिन्छ।</string>
-    <string name="action_grant_permission">अनुमति दिनुहोस्</string>
-    <string name="permission_denied_message">अनुमति अस्वीकार गरियो। Musicplayer प्रयोग गर्न कृपया सेटिङमा गई अडियो पहुँच सक्षम गर्नुहोस्।</string>
-    <string name="action_open_settings">सेटिङ खोल्नुहोस्</string>
+    <string name="settings_title">सेटिङ</string>
+    <string name="settings_folders_title">सङ्गीत फोल्डरहरू</string>
+    <string name="settings_folders_empty">अहिलेसम्म कुनै फोल्डर छानिएको छैन।</string>
+
+    <string name="folder_setup_title">आफ्नो सङ्गीत फोल्डर छान्नुहोस्</string>
+    <string name="folder_setup_message">तपाईंको सङ्गीत भएको फोल्डर छान्नुहोस्। त्यो फोल्डर मात्र स्क्यान गरिन्छ — डिभाइसका अन्य फाइलहरू पहुँच गरिँदैन।</string>
 
     <string name="library_empty">यस डिभाइसमा कुनै सङ्गीत फेला परेन।</string>
     <string name="albums_empty">कुनै एल्बम फेला परेन।</string>

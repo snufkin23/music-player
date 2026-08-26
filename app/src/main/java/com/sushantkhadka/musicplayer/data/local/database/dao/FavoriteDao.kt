@@ -20,6 +20,9 @@ interface FavoriteDao {
     @Query("SELECT * FROM favorites ORDER BY addedAt DESC")
     fun getAllFavorites(): Flow<List<FavoriteEntity>>
 
-    @Query("SELECT EXISTS(SELECT 1 FROM favorites WHERE mediaStoreTrackId = :trackId)")
-    fun isFavorite(trackId: Long): Flow<Boolean>
+    @Query("SELECT * FROM favorites")
+    suspend fun getAllFavoritesOnce(): List<FavoriteEntity>
+
+    @Query("SELECT EXISTS(SELECT 1 FROM favorites WHERE trackId = :trackId)")
+    fun isFavorite(trackId: String): Flow<Boolean>
 }
