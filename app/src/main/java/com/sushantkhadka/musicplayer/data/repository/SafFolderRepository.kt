@@ -48,9 +48,11 @@ class SafFolderRepository @Inject constructor(
         }
     }
 
-    private fun queryDisplayName(uri: Uri): String? {
-        return context.contentResolver.query(
-            uri,
+    private fun queryDisplayName(uri: Uri): String? = runCatching {
+        val documentId = DocumentsContract.getTreeDocumentId(uri)
+        val documentUri = DocumentsContract.buildDocumentUriUsingTree(uri, documentId)
+        context.contentResolver.query(
+            documentUri,
             arrayOf(DocumentsContract.Document.COLUMN_DISPLAY_NAME),
             null,
             null,
@@ -58,7 +60,7 @@ class SafFolderRepository @Inject constructor(
         )?.use { cursor ->
             if (cursor.moveToFirst()) cursor.getString(0) else null
         }
-    }
+    }.getOrNull()
 
     private fun MusicFolderEntity.toModel(): MusicFolder = MusicFolder(
         id = id,

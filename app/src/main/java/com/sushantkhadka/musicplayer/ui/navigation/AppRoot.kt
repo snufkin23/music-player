@@ -311,7 +311,7 @@ private fun MiniPlayerBar(
                     error = ColorPainter(MaterialTheme.colorScheme.surface),
                     modifier = Modifier
                         .size(Dimens.albumArtThumbnail)
-                        .clip(RoundedCornerShape(Dimens.cornerRadiusSmall))
+                        .clip(RoundedCornerShape(Dimens.spaceXSmall * 1.5f))
                 )
 
                 Column(

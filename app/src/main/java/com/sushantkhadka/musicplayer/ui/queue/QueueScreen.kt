@@ -119,14 +119,14 @@ private fun QueueRow(
                 contentScale = ContentScale.Crop,
                 error = ColorPainter(MaterialTheme.colorScheme.surfaceVariant),
                 modifier = Modifier
-                    .size(Dimens.albumArtQueue)
-                    .clip(RoundedCornerShape(Dimens.cornerRadiusSmall))
+                    .size(Dimens.albumArtThumbnail + Dimens.spaceXSmall)
+                    .clip(RoundedCornerShape(Dimens.spaceXSmall * 1.5f))
             )
 
             Column(
                 modifier = Modifier
                     .weight(1f)
-                    .padding(start = Dimens.spaceXS)
+                    .padding(start = Dimens.spaceSmall * 1.25f)
             ) {
                 Text(
                     text = item.title,

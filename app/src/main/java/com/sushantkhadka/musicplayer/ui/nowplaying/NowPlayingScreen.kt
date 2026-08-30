@@ -184,7 +184,7 @@ fun NowPlayingScreen(
                         }
                         IconButton(
                             onClick = onPlayPauseClicked,
-                            modifier = Modifier.size(Dimens.iconPlayButtonContainer)
+                            modifier = Modifier.size(Dimens.iconPlayButton + Dimens.spaceLarge)
                         ) {
                             Icon(
                                 if (isPlaying) Icons.Filled.Pause else Icons.Filled.PlayArrow,

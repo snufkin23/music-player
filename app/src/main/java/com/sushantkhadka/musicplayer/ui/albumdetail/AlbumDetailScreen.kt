@@ -64,7 +64,7 @@ fun AlbumDetailScreen(
                     error = ColorPainter(MaterialTheme.colorScheme.surfaceVariant),
                     modifier = Modifier
                         .size(Dimens.albumArtHeader)
-                        .clip(RoundedCornerShape(Dimens.cornerRadiusSmall))
+                        .clip(RoundedCornerShape(Dimens.spaceXSmall * 1.5f))
                 )
 
                 Column(modifier = Modifier.padding(start = Dimens.spaceSmall)) {
